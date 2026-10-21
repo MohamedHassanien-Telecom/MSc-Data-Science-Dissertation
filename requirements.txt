@@ -1,0 +1,22 @@
+# torch / torchvision / timm: not pinned, so Colab's preinstalled CUDA build is used
+# unchanged. The notebook's environment cell records the versions of every session
+# (OUTPUT_DIR/environment/*.json).
+torch>=2.0.0
+torchvision>=0.15.0
+timm>=0.9.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+Pillow>=9.0.0
+
+# Pinned: these compute the statistical tests and the reported metrics.
+# scipy: stats.wilcoxon (the paired comparisons of the search, its stopping rule
+#   and the scoring-rule cells) uses method="auto", which chooses between the exact
+#   and the asymptotic p-value by sample size and ties; that choice can change
+#   between versions.
+scipy==1.17.1
+
+# numpy: lower bound only (an exact pin conflicted with Colab's torch build).
+numpy>=1.24.0
+
+# scikit-learn: roc_auc_score / roc_curve compute the reported AUROC and FPR95.
+scikit-learn==1.8.0
