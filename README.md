@@ -45,8 +45,20 @@ phases/                Phase I (search and production), Phase II (SNR sweep), Ph
 tools/                 CPU scripts that read saved results: compression statistics, town test,
                        independent recomputation of Decision Retention, synthetic LS-AUROC check,
                        location prior on other benchmarks
+tests/                 39 test scripts (CPU only; no GPU or dataset needed)
 REPRODUCE.md           run order, outputs, selected hyperparameters, resuming
 requirements.txt       dependencies (the statistical libraries are pinned)
 ```
 
-The automated tests mentioned in the dissertation are not included in this repository.
+## Tests
+
+Each script in `tests/` checks one part of the code on synthetic data, small untrained models or stubs; its
+docstring lists what it checks. Run all of them from the repository root after `pip install -r requirements.txt`:
+
+```
+for f in tests/test_*.py; do python3 "$f" > /dev/null 2>&1 && echo "pass  $f" || echo "FAIL  $f"; done
+```
+
+A script exits with a non-zero status on failure; the full set takes about 13 minutes on a two-core CPU.
+`tests/test_dependency_versions.py` also reports whether the installed statistics libraries match the pinned
+versions.
