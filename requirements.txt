@@ -8,7 +8,8 @@ matplotlib>=3.7.0
 seaborn>=0.12.0
 Pillow>=9.0.0
 
-# Pinned: these compute the statistical tests and the reported metrics.
+# Pinned: these compute the statistical tests and the reported metrics
+# (tests/test_dependency_versions.py checks the installed versions against these pins).
 # scipy: stats.wilcoxon (the paired comparisons of the search, its stopping rule
 #   and the scoring-rule cells) uses method="auto", which chooses between the exact
 #   and the asymptotic p-value by sample size and ties; that choice can change
