@@ -105,3 +105,10 @@ and `phase1_meta.json`). In the summary files the keys `kruskal_p` and `epsilon_
 Re-run the same cells after a disconnect. Every stored result records the settings it was produced under
 (`src/config.py: training_fingerprint`, `evaluation_fingerprint`) and is reused only if they match the
 current settings; otherwise it is recomputed.
+
+## 6. Tests
+
+`tests/` holds 39 scripts that check the code on synthetic data, small untrained models or stubs, on a CPU
+and without the dataset (how to run them: `README.md`). Some scripts also read `run_experiment.ipynb`, without
+running it, to check that its cells call the right functions in the right order. Run them after changing the
+code and before a new production run.
